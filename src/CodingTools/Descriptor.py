@@ -2,7 +2,9 @@
     This file contain descriptor classes.
 """
 
+# import process
 # this module
+from .ErrorClass import AssignmentError
 
 # other
 from abc import ABC
@@ -43,3 +45,67 @@ class Skeleton(ABC):
         return instance.__dict__[self.name]
 
     ...
+
+
+""" DataType Validator"""
+
+
+def validate_dtype(target: any, dtypes: set[type]) -> bool:
+    """
+        Validate target with dtype.
+    :param target: value to validate with dtypes.
+    :param dtypes: dtypes to permission.
+    :return: Results of the validating.
+    """
+    if any in dtypes:
+        return True
+
+    if target is None and None in dtypes:
+        return True
+
+    return type(target) in dtypes
+
+
+class DataType(Skeleton):
+    """
+        DataTypeValidator
+
+    This class is descriptor class.
+    The class validates the data type of the Value.
+    """
+
+    # instance variables
+    __permission: set[type or any or None] = None
+
+    # constant variables
+    __PERMISSION_MESSAGE: str = \
+        "Not match permission dtypes -> {}({})"
+
+    def __init__(self, *permission_dtypes: type | None):
+        """
+            Initialize permission dtypes and settings.
+        :param permission_dtypes: The dtypes you want to allow.
+        """
+        if len(permission_dtypes) == 0:
+            self.__permission = {any, None}
+            ...
+        else:
+            self.__permission = set(permission_dtypes)
+            ...
+
+        return
+
+    @property
+    def permission(self) -> tuple: return tuple(self.__permission)
+
+    def __set__(self, instance, value: any) -> None:
+        # validate process
+        if not validate_dtype(value, self.__permission):
+            raise AssignmentError(
+                self.__PERMISSION_MESSAGE.format(value, type(value))
+            )
+        ...
+
+        # set process
+        super().__set__(instance, value)
+        return

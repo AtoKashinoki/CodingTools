@@ -18,7 +18,7 @@ This module contains tools that you can use for development.
   - [ ] Initialize process
 - [ ] Descriptor.py
   - [x] Skeleton class
-  - [ ] DataType class
+  - [x] DataType class
   - [ ] Constant class
 - [ ] Inheritance.py
   - [ ] DataClass class
