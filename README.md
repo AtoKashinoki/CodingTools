@@ -10,7 +10,7 @@ This module contains tools that you can use for development.
 1. ~~Descriptor skeleton~~
 2. ~~DataType descriptor~~
 3. ~~Constant descriptor~~
-4. DataClass inheritance class
+4. ~~DataClass inheritance class~~
 5. Decorator skeleton
 
 ### Developed
@@ -21,7 +21,7 @@ This module contains tools that you can use for development.
   - [x] DataType class
   - [x] Constant class
 - [ ] Inheritance.py
-  - [ ] DataClass class
+  - [x] DataClass class
 - [ ] Decorator.py
   - [ ] Skeleton class
 - [ ] DataType.py
