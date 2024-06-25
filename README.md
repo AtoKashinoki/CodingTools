@@ -22,6 +22,6 @@ This module contains tools that you can use for development.
   - [x] Constant class
 - [x] Inheritance.py
   - [x] DataClass class
-- [ ] Decorator.py
+- [x] Decorator.py
   - [x] Skeleton class
 - [ ] DataType.py

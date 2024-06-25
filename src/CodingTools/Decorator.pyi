@@ -1,0 +1,9 @@
+
+from abc import (ABC, abstractmethod)
+
+class Skeleton(ABC):
+    @abstractmethod
+    def __init__(self, *args, **kwargs): ...
+    @abstractmethod
+    def __call__(self, *args, **kwargs): ...
+    ...
