@@ -104,8 +104,50 @@ class DataType(Skeleton):
             raise AssignmentError(
                 self.__PERMISSION_MESSAGE.format(value, type(value))
             )
-        ...
 
         # set process
         super().__set__(instance, value)
         return
+
+    ...
+
+
+""" Constant descriptor """
+
+
+class Constant(Skeleton):
+    """
+        ConstantDescriptor
+
+    This class is descriptor class.
+    The class validates Assignment values.
+    """
+
+    # instance variables
+    __value: any = None
+
+    # constant variables
+    __NOT_ASSIGNABLE_MESSAGE: str = \
+        "Not assignable -> {}.{}"
+
+    def __init__(self, constant_value: any):
+        """
+            Initialize constant value.
+        :param constant_value: value to assign.
+        """
+        self.__value = constant_value
+        return
+
+    def __set__(self, instance, value: any) -> None:
+        """ Not assignable """
+        raise AssignmentError(
+            self.__NOT_ASSIGNABLE_MESSAGE.format(
+                self.owner.__name__, self.name
+            )
+        )
+
+    def __get__(self, instance, owner) -> any:
+        """ Get constant value """
+        return self.__value
+
+    ...
