@@ -23,7 +23,7 @@ class DataClass(ABC):
 
     # constant variables
     __PRINT_DATAS: str = Constant("{}{}")
-    __DESCRIPTORS: set = Constant({DataType, Constant})
+    __DESCRIPTORS: set[type] = Constant({DataType, Constant})
 
     def __repr__(self):
         return self.__PRINT_DATAS.format(

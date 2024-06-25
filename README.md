@@ -20,7 +20,7 @@ This module contains tools that you can use for development.
   - [x] Skeleton class
   - [x] DataType class
   - [x] Constant class
-- [ ] Inheritance.py
+- [x] Inheritance.py
   - [x] DataClass class
 - [ ] Decorator.py
   - [ ] Skeleton class
