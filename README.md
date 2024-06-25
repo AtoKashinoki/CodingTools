@@ -24,4 +24,4 @@ This module contains tools that you can use for development.
   - [x] DataClass class
 - [x] Decorator.py
   - [x] Skeleton class
-- [ ] DataType.py
+- [x] DataType.py
