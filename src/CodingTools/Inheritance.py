@@ -34,7 +34,7 @@ class DataClass(ABC):
         [
             setattr(
                 self,
-                get_variable_name(self, key),
+                get_variable_name(self.__class__, key),
                 value
             )
             for key, value in kwargs.items()
