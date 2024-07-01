@@ -24,6 +24,12 @@ except ImportError as e:
     ...
 
 try:
+    from . import Function
+    ...
+except ImportError as e:
+    Function = ImportError(e)
+
+try:
     from . import Descriptor
     ...
 except ImportError as e:

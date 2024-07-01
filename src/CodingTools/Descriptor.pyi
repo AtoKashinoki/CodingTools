@@ -17,8 +17,6 @@ class Skeleton(ABC):
 
     ...
 
-def validate__dtype(target: any, dtypes: set[type]) -> bool: ...
-
 class DataType(Skeleton):
     __permission: set[type or any or None]
     __PERMISSION_MESSAGE: str

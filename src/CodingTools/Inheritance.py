@@ -5,34 +5,13 @@
 # import process
 # this module
 from .Descriptor import (DataType, Constant)
+from .Function import get_variable_name
 
 # other
 from abc import (ABC, abstractmethod)
 
 
 """ DataClassInheritanceClass """
-
-
-def protect_member(instance, key: str) -> str:
-    """
-        Generate protect member.
-    :param instance: class instance.
-    :param key: variable name.
-    :return: protect member key.
-    """
-    return "_" + instance.__class__.__name__ + key
-
-
-def get_variable_name(instance, key) -> str:
-    """
-    Check protect member and Return variable name.
-    :param instance: class instance.
-    :param key: variable name.
-    :return: variable name key.
-    """
-    if key[:2] == "__":
-        return protect_member(instance, key)
-    return key
 
 
 class DataClass(ABC):

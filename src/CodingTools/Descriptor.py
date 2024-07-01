@@ -5,6 +5,7 @@
 # import process
 # this module
 from .ErrorClass import AssignmentError
+from .Function import validate_dtype
 
 # other
 from abc import ABC
@@ -48,22 +49,6 @@ class Skeleton(ABC):
 
 
 """ DataType Validator"""
-
-
-def validate_dtype(target: any, dtypes: set[type]) -> bool:
-    """
-        Validate target with dtype.
-    :param target: value to validate with dtypes.
-    :param dtypes: dtypes to permission.
-    :return: Results of the validating.
-    """
-    if any in dtypes:
-        return True
-
-    if target is None and None in dtypes:
-        return True
-
-    return type(target) in dtypes
 
 
 class DataType(Skeleton):
