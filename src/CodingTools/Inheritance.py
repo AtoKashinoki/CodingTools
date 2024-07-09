@@ -26,7 +26,7 @@ class DataClass(ABC):
     __PRINT_DATAS: str = Constant("{}{}")
     __DESCRIPTORS: set[type] = Constant({DataType, Constant})
 
-    def set_values(self, **kwargs):
+    def __set_values__(self, **kwargs):
         """
             Initialize datas.
         :param kwargs: key -> value name : value to assign.

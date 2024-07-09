@@ -20,7 +20,7 @@ class Test:
 
     def __init__(self):
         self.test_datas.test1 = "test1"
-        self.test_datas.set_values(
+        self.test_datas.__set_values__(
             __test3="test3",
             test4="test4",
         )
