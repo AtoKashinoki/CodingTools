@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=63.2.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "CodingTools"
+version = "3.0.0"
+description = "This module contains tools that you can use to code programs."
+
+readme = "README.md"
+license = {file="LICENSE"}
+
+requires-python = ">=3.7"
+dependencies = [
+]
+
+authors = [
+   {name="AtoKashinoki", email="atokashinoki@gmail.com"}
+]
+classifiers = [
+   "Programming Language :: Python :: 3.10",
+   "License :: OSI Approved :: MIT License",
+]
+
+
+[project.urls]
+"Homepage" = "https://github.com/AtoKashinoki/CodingTools"
+"Bug Tracker" = "https://github.com/AtoKashinoki/CodingTools/issues"
+
+
+[project.scripts]
