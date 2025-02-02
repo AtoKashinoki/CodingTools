@@ -16,7 +16,7 @@ class DefinedError(AttributeError):
 
     """ message """
     message: str = (
-        "name {name} is not defined."
+        "name '{name}' is not defined."
     )
 
     def __init__(self, name: str):
