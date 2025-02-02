@@ -5,18 +5,19 @@ This module contains tools that you can use to code programs.
 
 ## Overview
 CodingTools
-- ~~type~~
-- ~~definition~~
-- inheritance
+- ~~Definition~~
+- ~~Type~~
+- Inheritance
   - DataClass
-- ~~wrapper~~
-- ~~descriptor~~
+- ~~Wrapper~~
+- ~~Descriptor~~
   - ~~Descriptor skeleton~~
   - ~~DataType~~
-- ~~command~~
+- ~~Error~~
+- ~~Command~~
   - ~~Command skeleton~~
-- ~~define~~
-- ~~debug~~
+- ~~Define~~
+- ~~Debug~~
 
 
 ## Using
