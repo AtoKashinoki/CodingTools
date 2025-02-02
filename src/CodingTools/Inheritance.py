@@ -11,6 +11,8 @@ This file contains the inheritance-related tools used for developing in Python.
 from abc import ABC, abstractmethod
 from typing import Any
 
+from .Error.Attribute import DefinedError
+
 
 """ Skeleton """
 
@@ -41,7 +43,7 @@ class DataClass(InheritanceSkeleton):
     def __validate_attribute(self, key: str) -> None:
         """ Validate attribute """
         if key not in self.__get_accessible_keys():
-            raise AttributeError("name '{}' is not defined.".format(key))
+            raise DefinedError(key)
         return
 
     def __getitem__(self, key: str):

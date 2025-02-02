@@ -31,4 +31,5 @@ if __name__ == "__main__":
     test2 = DataClass()
     test2.test10 = "test10"
     print(test2)
+    print(test2["test2"])
     ...

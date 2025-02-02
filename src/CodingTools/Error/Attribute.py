@@ -11,7 +11,7 @@ This file contains AttributeError-related tools used for developing in Python.
 """ Error """
 
 
-class Defined(AttributeError):
+class DefinedError(AttributeError):
     """ Attribute define error """
 
     """ message """
