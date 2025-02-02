@@ -6,9 +6,9 @@ This module contains tools that you can use to code programs.
 ## Overview
 CodingTools
 - ~~type~~
-- ~~inheritance~~
-  - ~~Inheritance skeleton~~
-  - ~~DataClass~~
+- ~~definition~~
+- inheritance
+  - DataClass
 - ~~wrapper~~
 - ~~descriptor~~
   - ~~Descriptor skeleton~~
