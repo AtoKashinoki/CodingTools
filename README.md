@@ -13,9 +13,9 @@ CodingTools
 - ~~Descriptor~~
   - ~~Descriptor skeleton~~
   - ~~DataType~~
-- ~~Error~~
-  - ~~Attribute~~
-    - ~~DefineError~~
+- Error
+  - Attribute
+    - DefinedError
 - ~~Command~~
   - ~~Command skeleton~~
 - ~~Define~~
