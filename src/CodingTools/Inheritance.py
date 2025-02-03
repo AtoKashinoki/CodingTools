@@ -19,6 +19,7 @@ from .Error.Attribute import DefinedError
 
 class InheritanceSkeleton(ABC):
     """ Inheritance Skeleton """
+    ...
 
 
 """ Data class """
