@@ -5,23 +5,32 @@ This module contains tools that you can use to code programs.
 
 ## Overview
 CodingTools
+
 - ~~Definition~~
+
 - ~~Type~~
+
 - Inheritance
   - DataClass
+
 - Wrapper
   - WrapperSkeleton
   - Wrapper decorator
   - classtools_wraps function
+
 - ~~Descriptor~~
   - ~~Descriptor skeleton~~
   - ~~DataType~~
+
 - Error
   - Attribute
     - DefinedError
+
 - ~~Command~~
   - ~~Command skeleton~~
+
 - ~~Define~~
+
 - ~~Debug~~
 
 
