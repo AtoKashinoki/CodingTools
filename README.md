@@ -9,7 +9,10 @@ CodingTools
 - ~~Type~~
 - Inheritance
   - DataClass
-- ~~Wrapper~~
+- Wrapper
+  - WrapperSkeleton
+  - Wrapper decorator
+  - classtools_wraps function
 - ~~Descriptor~~
   - ~~Descriptor skeleton~~
   - ~~DataType~~
