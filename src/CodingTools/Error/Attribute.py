@@ -19,11 +19,11 @@ class DefinedError(AttributeError):
         "name '{name}' is not defined."
     )
 
-    def __init__(self, name: str):
+    def __init__(self, _name: str):
         """ Initialize message """
         super().__init__(
             self.message.format(
-                name=name,
+                name=_name,
             )
         )
         return

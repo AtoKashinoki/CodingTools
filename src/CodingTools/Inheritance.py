@@ -41,21 +41,21 @@ class DataClass(InheritanceSkeleton):
             if key[0] != "_"
         )
 
-    def __validate_attribute(self, key: str) -> None:
+    def __validate_attribute(self, _key: str) -> None:
         """ Validate attribute """
-        if key not in self.__get_accessible_keys():
-            raise DefinedError(key)
+        if _key not in self.__get_accessible_keys():
+            raise DefinedError(_key)
         return
 
-    def __getitem__(self, key: str):
+    def __getitem__(self, _key: str):
         """ Access and get value """
-        self.__validate_attribute(key)
-        return getattr(self, key)
+        self.__validate_attribute(_key)
+        return getattr(self, _key)
 
-    def __setitem__(self, key: str, value: Any):
+    def __setitem__(self, _key: str, _value: Any):
         """ Access and set value """
-        self.__validate_attribute(key)
-        setattr(self, key, value)
+        self.__validate_attribute(_key)
+        setattr(self, _key, _value)
         return
 
     """ debug """
