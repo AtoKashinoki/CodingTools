@@ -6,7 +6,9 @@ This module contains tools that you can use to code programs.
 ## Overview
 CodingTools
 
-- ~~Definition~~
+- Definition
+  - Coordinate class
+    - IDX class
 
 - ~~Type~~
 
