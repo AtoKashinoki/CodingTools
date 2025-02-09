@@ -77,6 +77,10 @@ def classtools_wraps(
 
 
 @Wrapper
-def initialize(_target):
+def initialize(*args, **kwargs) -> Callable[[Any], Any]:
     """ Initialize target class """
-    return _target
+
+    def wrapper(_target: Any) -> Any:
+        return _target(*args, **kwargs)
+
+    return wrapper
