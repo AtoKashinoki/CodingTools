@@ -73,4 +73,10 @@ def classtools_wraps(
     return wrapper
 
 
+""" initializer """
 
+
+@Wrapper
+def initialize(_target):
+    """ Initialize target class """
+    return _target
