@@ -1,27 +1,41 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ['setuptools']
+build-backend = 'setuptools.build_meta'
 
 
 [project]
-name = "CodingTools"
-version = "3.1.0"
-description = "This module contains tools that you can use to code programs."
+name = 'CodingTools'
+version = '3.2.0'
+description = 'This module contains tools that you can use to code programs.'
 
-readme = "README.md"
-license = {file="LICENSE"}
 
-requires-python = ">=3.13"
+readme = 'README.md'
+license = {file='LICENSE'}
+
+requires-python = '>=3.7'
 dependencies = [
 ]
 
 authors = [
-   {name="AtoKashinoki", email="atokashinoki@gmail.com"}
+   {name='AtoKashinoki', email='atokashinoki@gmail.com'}
 ]
 classifiers = [
-   "Programming Language :: Python :: 3.13",
-   "License :: OSI Approved :: MIT License",
-]
+   'Development Status :: 3 - Alpha',
+   'Intended Audience :: Developers',
+   'License :: OSI Approved :: MIT License',
+   'Natural Language :: English',
+   'Operating System :: OS Independent',
+   'Programming Language :: Python :: 3.7',
+   'Programming Language :: Python :: 3.8',
+   'Programming Language :: Python :: 3.9',
+   'Programming Language :: Python :: 3.10',
+   'Programming Language :: Python :: 3.11',
+   'Programming Language :: Python :: 3.12',
+   'Programming Language :: Python :: 3.13',
+   'Programming Language :: Python :: Implementation :: CPython',
+   'Topic :: Software Development :: Libraries :: Python Modules',
+   'Topic :: Utilities',
+   ]
 
 
 [project.urls]
@@ -30,4 +44,4 @@ classifiers = [
 
 
 [project.scripts]
-CodingTools = "CodingTools.Command:CodingTools.__call__"
+CodingTools = "CodingTools.__CodingCommands__:CodingTools.__call__"

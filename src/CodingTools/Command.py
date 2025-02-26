@@ -13,7 +13,6 @@ from abc import abstractmethod
 from typing import Any
 
 from .Inheritance import InheritanceSkeleton
-from .Wrapper import initialize
 
 
 """ Command Skeleton """
@@ -26,7 +25,8 @@ class CommandSkeleton(InheritanceSkeleton):
     def __init__(
             self,
             help_message: str = None,
-            names: tuple[str, ...] = None
+            names: tuple[str, ...] = None,
+            help_names: tuple[str, ...] = ("-h", "--help"),
     ):
         """ Initialize method """
         """ set name """
@@ -39,7 +39,7 @@ class CommandSkeleton(InheritanceSkeleton):
 
         """ set help """
         self.__help: Help = (
-            Help(help_message)
+            Help(help_message, help_names)
             if help_message is not None else
             None
         )
@@ -73,8 +73,8 @@ class Help(CommandSkeleton):
     """ Help command """
 
     """ Initializer """
-    def __init__(self, message: str):
-        super().__init__(names=("-h", ))
+    def __init__(self, message: str, names: tuple[str, ...]=None):
+        super().__init__(names=("-h", "--help") if names is None else names)
         self.__message = message
         return
 
@@ -92,64 +92,5 @@ class Help(CommandSkeleton):
     """ debug """
     def __repr__(self) -> str:
         return self.__message
-
-    ...
-
-
-""" CodingTools command """
-
-
-@initialize(
-    ()
-)
-class CodingTools(CommandSkeleton):
-    """ CodingTools command """
-
-    __help_massage__: str = (
-        "CodingTools command help\n"
-        "   CodingTools [Command] [options]\n"
-        "\n"
-        "   Command\n"
-        "       [Help] or [-h]\n"
-        "       Print help of CodingTools command\n"
-    )
-
-    """ Initialize """
-    def __init__(self, commands: tuple[CommandSkeleton, ...]):
-        """ Initialize command list """
-        super().__init__(self.__help_massage__)
-        self.__commands = commands
-        return
-
-    """ command list """
-    __commands: tuple[CommandSkeleton, ...]
-    @property
-    def commands(self) -> tuple[CommandSkeleton, ...]:
-        return self.__commands
-
-    """ command process """
-    def __command__(self, argv: tuple[str, ...]) -> Any | None:
-        """ Access process """
-        command_argv = argv[1:]
-        if len(command_argv) == 0:
-            self.help()
-            return None
-
-        """ validate and run command """
-        for command in (*self.__commands, self.help):
-            if not command_argv[0] in command.names:
-                continue
-
-            result = command()
-            if result is not None: print(result)
-
-            break
-
-        else:
-            print(f"Command '{command_argv[0]}' is not found.")
-            self.help()
-            ...
-
-        return None
 
     ...

@@ -1,0 +1,48 @@
+[build-system]
+requires = ['setuptools']
+build-backend = 'setuptools.build_meta'
+
+
+[project]
+name = '<name>'
+version = '0.0.0'
+description = '<description>'
+
+readme = 'README.md'
+license = {file='LICENSE'}
+
+requires-python = '>=<python_version>'
+dependencies = [
+]
+
+author = [
+   {name='<your_name>', email='<EMAIL>'}
+]
+classifiers = [
+   'Development Status :: 3 - Alpha',
+   'Intended Audience :: Developers',
+   'License :: OSI Approved :: MIT License',
+   'Natural Language :: English',
+   'Operating System :: OS Independent',
+   'Programming Language :: Python :: 3.7',
+   'Programming Language :: Python :: 3.8',
+   'Programming Language :: Python :: 3.9',
+   'Programming Language :: Python :: 3.10',
+   'Programming Language :: Python :: 3.11',
+   'Programming Language :: Python :: 3.12',
+   'Programming Language :: Python :: 3.13',
+   'Programming Language :: Python :: Implementation :: CPython',
+   'Topic :: Software Development :: Libraries :: Python Modules',
+   'Topic :: Utilities',
+   ]
+
+
+[project.urls]
+'Homepage' = '<url>'
+'Bug Traker' = '<url>'
+'Documentation' = '<url>'
+'Source' = '<url>'
+
+
+[project.scripts]
+
