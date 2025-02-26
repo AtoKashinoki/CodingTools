@@ -8,7 +8,13 @@ This file contains AttributeError-related tools used for developing in Python.
 """ imports """
 
 
+from .Skeleton import gen_skeleton
+
+
 """ Error """
+
+
+AttributeError = gen_skeleton(AttributeError)
 
 
 class DefinedError(AttributeError):
@@ -19,13 +25,9 @@ class DefinedError(AttributeError):
         "name '{name}' is not defined."
     )
 
-    def __init__(self, _name: str):
+    def __init__(self, _name: str) -> None:
         """ Initialize message """
-        super().__init__(
-            self.message.format(
-                name=_name,
-            )
-        )
+        super().__init__(name=_name)
         return
 
     ...
