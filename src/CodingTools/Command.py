@@ -126,6 +126,6 @@ class CodingTools(CommandSkeleton):
             self.help()
             ...
 
-        return
+        return None
 
     ...
