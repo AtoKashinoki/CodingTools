@@ -13,7 +13,6 @@ from abc import abstractmethod
 from typing import Any
 
 from .Inheritance import InheritanceSkeleton
-from .Wrapper import initialize
 
 
 """ Command Skeleton """
