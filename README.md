@@ -36,9 +36,11 @@ CodingTools
   - TypeError
     - ValidError
 
-- ~~Command
+- Command
   - Command skeleton
   - Help command class
+
+- \_\_CodingCommands__
   - CodingTools command
 
 - ~~Define~~

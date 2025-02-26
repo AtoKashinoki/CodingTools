@@ -30,4 +30,4 @@ classifiers = [
 
 
 [project.scripts]
-CodingTools = "CodingTools.Command:CodingTools.__call__"
+CodingTools = "CodingTools.__CodingCommands__:CodingTools.__call__"
