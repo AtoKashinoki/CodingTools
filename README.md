@@ -12,6 +12,9 @@ CodingTools
 
 - ~~Type~~
 
+- Typing
+  - container
+
 - Inheritance
   - DataClass
 
@@ -20,15 +23,20 @@ CodingTools
   - Wrapper decorator
   - classtools_wraps function
 
-- ~~Descriptor~~
-  - ~~Descriptor skeleton~~
-  - ~~DataType~~
+- Descriptor
+  - Descriptor skeleton
+  - Declaration descriptor
 
 - Error
+  - Skeleton
+    - ErrorSkeleton
+    - gen_skeleton function
   - Attribute
     - DefinedError
+  - TypeError
+    - ValidError
 
-- ~~Command~~
+- ~~Command
   - ~~Command skeleton~~
 
 - ~~Define~~
