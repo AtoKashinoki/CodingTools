@@ -25,7 +25,8 @@ class CommandSkeleton(InheritanceSkeleton):
     def __init__(
             self,
             help_message: str = None,
-            names: tuple[str, ...] = None
+            names: tuple[str, ...] = None,
+            help_names: tuple[str, ...] = ("-h", "--help"),
     ):
         """ Initialize method """
         """ set name """
@@ -38,7 +39,7 @@ class CommandSkeleton(InheritanceSkeleton):
 
         """ set help """
         self.__help: Help = (
-            Help(help_message)
+            Help(help_message, help_names)
             if help_message is not None else
             None
         )
@@ -72,8 +73,8 @@ class Help(CommandSkeleton):
     """ Help command """
 
     """ Initializer """
-    def __init__(self, message: str):
-        super().__init__(names=("-h", ))
+    def __init__(self, message: str, names: tuple[str, ...]=None):
+        super().__init__(names=("-h", "--help") if names is None else names)
         self.__message = message
         return
 
