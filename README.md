@@ -37,7 +37,9 @@ CodingTools
     - ValidError
 
 - ~~Command
-  - ~~Command skeleton~~
+  - Command skeleton
+  - Help command class
+  - CodingTools command
 
 - ~~Define~~
 

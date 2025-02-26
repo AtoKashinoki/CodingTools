@@ -3,7 +3,7 @@
 
 This file contains the command-related tools used for developing in Python.
 """
-from idlelib.undo import Command
+
 
 """ imports """
 
@@ -23,20 +23,33 @@ class CommandSkeleton(InheritanceSkeleton):
     """ Command class skeleton """
 
     """ Initialize  """
-    def __init__(self, help_message: str = None):
+    def __init__(
+            self,
+            help_message: str = None,
+            names: tuple[str, ...] = None
+    ):
         """ Initialize method """
-        self.__name = self.__class__.__name__
+        """ set name """
+        if names is None:
+            self.__names = (self.__class__.__name__, )
+            ...
+        else:
+            self.__names = names
+            ...
+
+        """ set help """
         self.__help: Help = (
             Help(help_message)
             if help_message is not None else
             None
         )
+
         return
 
     """ name """
-    __name: str
+    __names: tuple[str, ...]
     @property
-    def name(self) -> str: return self.__name
+    def names(self) -> tuple[str, ...]: return self.__names
 
     """ help command """
     @property
@@ -61,7 +74,7 @@ class Help(CommandSkeleton):
 
     """ Initializer """
     def __init__(self, message: str):
-        super().__init__()
+        super().__init__(names=("-h", ))
         self.__message = message
         return
 
@@ -74,7 +87,7 @@ class Help(CommandSkeleton):
     def __command__(self, argv: tuple[str, ...]) -> Any | None:
         """ Display help message """
         print(self.__message)
-        return
+        return None
 
     """ debug """
     def __repr__(self) -> str:
@@ -93,7 +106,12 @@ class CodingTools(CommandSkeleton):
     """ CodingTools command """
 
     __help_massage__: str = (
-        "Test"
+        "CodingTools command help\n"
+        "   CodingTools [Command] [options]\n"
+        "\n"
+        "   Command\n"
+        "       [Help] or [-h]\n"
+        "       Print help of CodingTools command\n"
     )
 
     """ Initialize """
@@ -113,16 +131,22 @@ class CodingTools(CommandSkeleton):
     def __command__(self, argv: tuple[str, ...]) -> Any | None:
         """ Access process """
         command_argv = argv[1:]
+        if len(command_argv) == 0:
+            self.help()
+            return None
 
         """ validate and run command """
         for command in (*self.__commands, self.help):
-            if not command_argv[0] == command.name:
+            if not command_argv[0] in command.names:
                 continue
 
             result = command()
+            if result is not None: print(result)
+
             break
 
         else:
+            print(f"Command '{command_argv[0]}' is not found.")
             self.help()
             ...
 
