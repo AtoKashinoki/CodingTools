@@ -179,6 +179,7 @@ class Library(CodingToolsCommandSkeleton):
         "\n"
         "   options\n"
         "       [create] or [-c]\n"
+        "       Create directory and toml of library.\n"
     )
 
     __names__: tuple[str, ...] = ("library", )
@@ -245,6 +246,12 @@ class CodingTools(CommandSkeleton):
         "   Command\n"
         "       [Help] or [-h]\n"
         "       Print help of CodingTools command\n"
+        "\n"
+        "       [toml]\n"
+        "       Create toml file\n"
+        "\n"
+        "       [library]\n"
+        "       Create directory and toml of library.\n"
     )
 
     """ Initialize """
