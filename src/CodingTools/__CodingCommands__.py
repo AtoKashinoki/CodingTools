@@ -8,7 +8,8 @@ This file contains the CodingCommand-relate tools used for developing in Python.
 """ imports """
 
 
-from os import path
+from os import path, mkdir
+from abc import ABC
 from typing import Any, Callable
 
 from .Wrapper import initialize
@@ -18,11 +19,54 @@ from .Command import CommandSkeleton
 """  commands """
 
 
+class CodingToolsCommandSkeleton(CommandSkeleton, ABC):
+    """ CodingTools commands skeleton """
+
+    """ options """
+    __options: dict[tuple[str, ...], Callable[[tuple[str, ...]], None]] = None
+
+    def add_options(
+            self,
+            _options: dict[tuple[str, ...], Callable[[tuple[str, ...]], None]],
+    ) -> None:
+        if self.__options is None: self.__options = {}
+        for key, value in _options.items():
+            self.__options[key] = value
+            ...
+        return
+
+    """ command process """
+    def __command__(self, argv: tuple[str, ...]) -> Any | None:
+        """ toml command process """
+        command_argv = argv[1:]
+        if len(command_argv) == 0 or command_argv[0] in self.help.names:
+            self.help()
+            return None
+
+        for option in self.__options:
+            if command_argv[0] not in option:
+                continue
+
+            result = self.__options[option](command_argv)
+            if result is not None: print(result)
+
+            break
+
+        else:
+            print(f"Option '{command_argv[0]}' is not found.")
+            self.help()
+            ...
+
+        return None
+
+    ...
+
+
 @initialize()
-class Toml(CommandSkeleton):
+class Toml(CodingToolsCommandSkeleton):
     """ Management toml file command """
 
-    """ text datas """
+    """ Settings """
     __help_message__: str = (
         "toml command help\n"
         "   toml [options]\n"
@@ -95,25 +139,23 @@ class Toml(CommandSkeleton):
             names=self.__names__,
         )
 
-        self.__options = {
+        self.add_options({
             ("create", "-c"): self.__create__,
-        }
-
+        })
         return
 
     """ options """
-    __options: dict[tuple[str, ...], Callable[[tuple[str, ...]], None]]
 
     def __create__(self, argv: tuple[str, ...]) -> None:
         """ Create toml file """
         print("Create toml file...")
 
         if path.isfile(self.__toml_file__):
-            print("File already exists...")
+            print("File already exists.")
             next_keys: tuple[str, ...] = ("Y", "Yes")
             reply = input(f"Reset toml file? [{"|".join(next_keys)}|n] -> ")
             if reply not in next_keys:
-                print("Cancelled...")
+                print("Cancelled to create toml file...")
                 return None
             ...
 
@@ -124,28 +166,61 @@ class Toml(CommandSkeleton):
         print("Successfully created toml file.")
         return None
 
-    """ command process """
-    def __command__(self, argv: tuple[str, ...]) -> Any | None:
-        """ toml command process """
-        command_argv = argv[1:]
-        if len(command_argv) == 0 or command_argv[0] in self.help.names:
-            self.help()
-            return None
+    ...
 
-        for option in self.__options:
-            if command_argv[0] not in option:
-                continue
+@initialize()
+class Library(CodingToolsCommandSkeleton):
+    """ Management about library command """
 
-            result = self.__options[option](command_argv)
-            if result is not None: print(result)
+    """ Settings """
+    __help_message__: str = (
+        "Library command help\n"
+        "   library [options]\n"
+        "\n"
+        "   options\n"
+        "       [create] or [-c]\n"
+    )
 
-            break
+    __names__: tuple[str, ...] = ("library", )
 
-        else:
-            print(f"Option '{command_argv[0]}' is not found.")
-            self.help()
-            ...
+    __dirs__: tuple[str, ...] = ("./src", "./src/None")
+    __files__: tuple[str, ...] = ("./src/None/__init__.py", )
 
+    """ Initializer """
+    def __init__(self):
+        """ Initialize self """
+        super().__init__(
+            help_message=self.__help_message__,
+            names=self.__names__,
+        )
+
+        self.add_options({
+            ("create", "-c"): self.__create__,
+        })
+        return
+
+    """ options """
+
+    def __create__(self, argv: tuple[str, ...]) -> None:
+        """ Create Library process """
+        print("Create directory of library...")
+
+        """ create library directories """
+        for directory in self.__dirs__:
+            if path.isdir(directory): continue
+            mkdir(directory)
+            continue
+
+        """ create library files """
+        for file in self.__files__:
+            if path.isfile(file): continue
+            with open(file, "w"): ...
+            continue
+
+        """ add toml file """
+        Toml(("toml", "create"))
+
+        print("Successfully created library.")
         return None
 
     ...
@@ -155,7 +230,10 @@ class Toml(CommandSkeleton):
 
 
 @initialize(
-    (Toml, )
+    (
+        Toml,
+        Library,
+    )
 )
 class CodingTools(CommandSkeleton):
     """ CodingTools command """
