@@ -42,6 +42,8 @@ CodingTools
 
 - \_\_CodingCommands__
   - CodingTools command
+  - Toml command class
+  - ~~library command class~~
 
 - ~~Define~~
 
