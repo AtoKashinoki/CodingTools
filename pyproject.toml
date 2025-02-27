@@ -5,9 +5,8 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'CodingTools'
-version = '3.3.1'
+version = '3.3.2'
 description = 'This module contains tools that you can use to code programs.'
-
 
 readme = 'README.md'
 license = {file='LICENSE'}
@@ -35,7 +34,7 @@ classifiers = [
    'Programming Language :: Python :: Implementation :: CPython',
    'Topic :: Software Development :: Libraries :: Python Modules',
    'Topic :: Utilities',
-   ]
+]
 
 
 [project.urls]
