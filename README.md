@@ -40,6 +40,10 @@ CodingTools
   - Command skeleton
   - Help command class
 
+- os
+  - mkdir
+  - rmtree
+
 - \_\_CodingCommands__
   - CodingTools command
   - Toml command class
