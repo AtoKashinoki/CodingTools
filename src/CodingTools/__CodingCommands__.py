@@ -153,7 +153,7 @@ class Toml(CodingToolsCommandSkeleton):
         if path.isfile(self.__toml_file__):
             print("File already exists.")
             next_keys: tuple[str, ...] = ("Y", "Yes")
-            reply = input(f"Reset toml file? [{"|".join(next_keys)}|n] -> ")
+            reply = input(f"Reset toml file? [{'|'.join(next_keys)}|n] -> ")
             if reply not in next_keys:
                 print("Cancelled to create toml file...")
                 return None
