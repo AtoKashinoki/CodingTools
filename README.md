@@ -16,7 +16,7 @@ CodingTools
   - container
 
 - Function
-  - Caveat functions
+  - ConsoleCaveat
     - create
 
 - Inheritance

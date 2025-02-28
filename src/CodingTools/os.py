@@ -13,6 +13,8 @@ import shutil
 
 from typing import Callable
 
+from .Function import ConsoleCaveat
+
 
 """ os processes """
 
@@ -29,14 +31,9 @@ def mkdir(_path: str) -> bool:
     return True
 
 
-def caveat_rmtree() -> bool:
-    """
-        Caveat from rmtree
-    :return bool: True if the user was approved.
-    """
-    if not input("Are you sure you want to delete it? [Y|n]: ") in ("Y", ):
-        return False
-    return True
+caveat_rmtree: Callable[[], bool] = ConsoleCaveat.create(
+    "Are you sure you want to delete it?",
+)
 
 
 def rmtree(
