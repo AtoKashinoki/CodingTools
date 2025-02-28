@@ -6,30 +6,40 @@ This module contains tools that you can use to code programs.
 ## Overview
 CodingTools
 
+
 - Definition
   - Coordinate class
     - IDX class
 
+
 - ~~Type~~
+
 
 - Typing
   - container
 
+
 - Function
   - ConsoleCaveat
+    - Message
+      - ALREADY_EXISTS
     - create
+
 
 - Inheritance
   - DataClass
+
 
 - Wrapper
   - WrapperSkeleton
   - Wrapper decorator
   - classtools_wraps function
 
+
 - Descriptor
   - Descriptor skeleton
   - Declaration descriptor
+
 
 - Error
   - Skeleton
@@ -40,20 +50,25 @@ CodingTools
   - TypeError
     - ValidError
 
+
 - Command
   - Command skeleton
   - Help command class
 
+
 - os
   - mkdir
   - rmtree
+
 
 - \_\_CodingCommands__
   - CodingTools command
   - Toml command class
   - library command class
 
+
 - ~~Define~~
+
 
 - ~~Debug~~
 

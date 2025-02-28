@@ -22,6 +22,11 @@ from typing import Callable
 class ConsoleCaveat:
     """ Functions about caveat """
 
+    class Message:
+        """ Caveatting message """
+        ALREADY_EXISTS: str ="File already exists.\nOverwrite it?"
+        ...
+
     @staticmethod
     def create(
             message: str = "Are you sure?",
