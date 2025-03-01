@@ -38,7 +38,7 @@ caveat_rmtree = ConsoleCaveat.create(
 
 def mk_rote(
         _start_path: str,
-        _dir_names: str,
+        _dir_names: tuple[str, ...],
 ) -> bool:
     """
     Make directory rote
