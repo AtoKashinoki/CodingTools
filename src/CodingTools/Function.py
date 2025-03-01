@@ -26,7 +26,7 @@ class ConsoleCaveat:
 
     class Message:
         """ Caveatting message """
-        ALREADY_EXISTS: str ="{path} already exists.\nOverwrite it?"
+        ALREADY_EXISTS: str ="'{path}' already exists.\nOverwrite it?"
         ...
 
     @staticmethod

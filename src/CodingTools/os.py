@@ -32,7 +32,7 @@ def mkdir(_path: str) -> bool:
 
 
 caveat_rmtree = ConsoleCaveat.create(
-    "Are you sure you want to delete {path}?",
+    "Are you sure you want to delete '{path}'?",
 )
 
 
