@@ -13,7 +13,7 @@ import shutil
 
 from typing import Callable, Any
 
-from .Function import ConsoleCaveat, caveat
+from .Function import ConsoleCaveat
 
 
 """ os processes """
