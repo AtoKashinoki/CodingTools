@@ -45,7 +45,7 @@ def rmtree(
 
     :return bool: True if the directory and its contents were removed.
     """
-    if not caveat_process():
-        return False
+    if not os.path.isdir(_path): return False
+    if not caveat_process(): return False
     shutil.rmtree(_path)
     return True
