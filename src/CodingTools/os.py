@@ -11,9 +11,9 @@ This file contains the os-relate tools for used for developing in python.
 import os
 import shutil
 
-from typing import Callable
+from typing import Callable, Any
 
-from .Function import ConsoleCaveat
+from .Function import ConsoleCaveat, caveat
 
 
 """ os processes """
@@ -31,14 +31,14 @@ def mkdir(_path: str) -> bool:
     return True
 
 
-caveat_rmtree: Callable[[], bool] = ConsoleCaveat.create(
-    "Are you sure you want to delete it?",
+caveat_rmtree = ConsoleCaveat.create(
+    "Are you sure you want to delete {path}?",
 )
 
 
 def rmtree(
         _path: str,
-        caveat_process: Callable[[], bool] = caveat_rmtree
+        caveat_process: Callable[[dict[str, Any]], bool] = caveat_rmtree
 ) -> bool:
     """
         Remove a directory and its contents
@@ -46,6 +46,6 @@ def rmtree(
     :return bool: True if the directory and its contents were removed.
     """
     if not os.path.isdir(_path): return False
-    if not caveat_process(): return False
+    if not caveat_process({"path": _path}): return False
     shutil.rmtree(_path)
     return True
