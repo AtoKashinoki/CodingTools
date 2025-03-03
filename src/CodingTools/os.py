@@ -54,7 +54,7 @@ caveat_rmtree = ConsoleCaveat.create(
 )
 
 
-def mk_rote(
+def mk_root(
         _start_path: str,
         _dir_names: list[str, ...],
 ) -> bool:
@@ -64,7 +64,7 @@ def mk_rote(
     """
     path = _start_path
     for dir_name in _dir_names:
-        path = os.path.join(path, dir_name)
+        path: str = os.path.join(path, dir_name)
         mkdir(path)
         continue
     return True

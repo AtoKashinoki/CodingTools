@@ -57,7 +57,9 @@ CodingTools
 
 
 - os
+  - path_replace_os_sep
   - mkdir
+  - mk_root
   - rmtree
 
 
