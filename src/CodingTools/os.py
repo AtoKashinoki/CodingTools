@@ -18,6 +18,24 @@ from .Function import ConsoleCaveat
 
 """ os processes """
 
+
+""" path """
+
+
+def path_replace_os_sep(_path: str) -> str:
+    """ Replace sep and return path """
+    after = os.sep
+
+    seps: tuple = ("\\", "/")
+    if after in seps[0]:
+        before = seps[1]
+        ...
+    else:
+        before = seps[0]
+        ...
+
+    return _path.replace(before, after)
+
 """ directory """
 
 
