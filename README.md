@@ -39,6 +39,7 @@ CodingTools
 - Descriptor
   - Descriptor skeleton
   - Declaration descriptor
+  - Update descriptor
 
 
 - Error

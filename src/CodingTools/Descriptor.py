@@ -88,3 +88,48 @@ class Declaration(DescriptorSkeleton):
         return obj.__dict__[self.name]
 
     ...
+
+
+""" Update target descriptor  """
+
+
+class Update(DescriptorSkeleton):
+    """ Target Update descriptors """
+
+    """ target and name """
+    __target_name: str
+    __attr_name: str
+
+    """ Initializer """
+
+    def __init__(
+            self,
+            _target_name: str,
+            _attr_name: str = None
+    ) -> None:
+        """ Create descriptor """
+        self.__target_name = _target_name
+        self.__attr_name = _attr_name
+        return
+
+    """ Descriptor process """
+
+    def __set_name__(self, owner, name):
+        DescriptorSkeleton.__set_name__(self, owner, name)
+        if self.__attr_name is not None: return
+        self.__attr_name = name
+        return
+
+    def __set__(self, instance, value):
+        setattr(instance, self.name, value)
+        target = getattr(instance, self.__target_name)
+        setattr(target, self.__attr_name, value)
+        return
+
+    def __get__(self, instance, owner):
+        target = getattr(instance, self.__target_name)
+        value = getattr(target, self.__attr_name)
+        setattr(instance, self.name, value)
+        return value
+
+    ...
