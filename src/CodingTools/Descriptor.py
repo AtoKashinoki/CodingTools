@@ -121,7 +121,7 @@ class Update(DescriptorSkeleton):
         return
 
     def __set__(self, obj: object, value: Any) -> None:
-        setattr(obj, self.name, value)
+        obj.__dict__[self.name] = value
         target = getattr(obj, self.__target_name)
         setattr(target, self.__attr_name, value)
         return
@@ -129,7 +129,7 @@ class Update(DescriptorSkeleton):
     def __get__(self, obj: object, objtype: type) -> object:
         target = getattr(obj, self.__target_name)
         value = getattr(target, self.__attr_name)
-        setattr(obj, self.name, value)
+        obj.__dict__[self.name] = value
         return value
 
     ...
@@ -152,11 +152,11 @@ class RunFunc(DescriptorSkeleton):
 
     """ descriptor process """
     def __set__(self, obj, value: Any) -> None:
-        setattr(obj, self.name, value)
+        obj.__dict__[self.name] = value
         self.__func(obj, value)
         return
 
     def __get__(self, obj: object, objtype: type) -> object:
-        return getattr(obj, self.name)
+        return obj.__dict__[self.name]
 
     ...
