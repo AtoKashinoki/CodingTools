@@ -40,6 +40,7 @@ CodingTools
   - Descriptor skeleton
   - Declaration descriptor
   - Update descriptor
+  - RunFunc descriptor
 
 
 - Error

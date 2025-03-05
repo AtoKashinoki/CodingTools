@@ -9,7 +9,7 @@ This file contains the descriptor-related tools used for developing in Python.
 
 
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, Callable
 from copy import deepcopy
 
 from .Inheritance import InheritanceSkeleton
@@ -120,16 +120,43 @@ class Update(DescriptorSkeleton):
         self.__attr_name = name
         return
 
-    def __set__(self, instance, value):
-        setattr(instance, self.name, value)
-        target = getattr(instance, self.__target_name)
+    def __set__(self, obj: object, value: Any) -> None:
+        setattr(obj, self.name, value)
+        target = getattr(obj, self.__target_name)
         setattr(target, self.__attr_name, value)
         return
 
-    def __get__(self, instance, owner):
-        target = getattr(instance, self.__target_name)
+    def __get__(self, obj: object, objtype: type) -> object:
+        target = getattr(obj, self.__target_name)
         value = getattr(target, self.__attr_name)
-        setattr(instance, self.name, value)
+        setattr(obj, self.name, value)
         return value
+
+    ...
+
+
+""" Run descriptor """
+
+
+class RunFunc(DescriptorSkeleton):
+    """ Run function descriptor """
+
+    """ run """
+    __func: Callable[[object, Any], None]
+
+    """ Initializer """
+    def __init__(self, func: Callable[[object, Any], None]) -> None:
+        """ Initialize descriptor """
+        self.__func = func
+        return
+
+    """ descriptor process """
+    def __set__(self, obj, value: Any) -> None:
+        setattr(obj, self.name, value)
+        self.__func(obj, value)
+        return
+
+    def __get__(self, obj: object, objtype: type) -> object:
+        return getattr(obj, self.name)
 
     ...
