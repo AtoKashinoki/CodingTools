@@ -19,6 +19,11 @@ from .Inheritance import DataClass
 """ System """
 
 
+class ALL(object):
+    """ ALL object """
+    ...
+
+
 class NULL(Exception):
     """ NULL object """
     __message: str

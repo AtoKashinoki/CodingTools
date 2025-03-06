@@ -9,10 +9,11 @@ This file contains the Config-relate tools used for developing in Python.
 
 
 import os
+from typing import KeysView
 
-from .Definition import NULL
-
+from .Definition import NULL, ALL
 from .Inheritance import DataClass
+from .Function import GetAttr, SetAttr
 
 
 """ Constants """
@@ -268,6 +269,48 @@ class ConfigManager(object):
         """ Write config file """
         result = write(self.path, self.__data, converter=self.__converter)
         return result
+
+    """ Attr set and get """
+    def getattr(
+            self,
+            _target: object,
+            keys: tuple[str] | list[str] | str | ALL | KeysView = ALL,
+    ) -> None:
+        """ Get attribute """
+        """ keys """
+        if keys is ALL: keys = self.__data.keys()
+
+        """ get values """
+        values = GetAttr.keys(_target, keys)
+
+        """ set value """
+        for key, value in zip(keys, values):
+            self.__data[key] = value
+            continue
+
+        return
+
+    def setattr(
+            self,
+            _target: object,
+            keys: tuple[str] | list[str] | str | ALL | KeysView = ALL,
+    ) -> None:
+        """ Set attribute """
+
+        """ keys """
+        if keys is ALL: keys = self.__data.keys()
+
+        """ assignment values """
+        assign_value: dict[str, str | int | float | bool] = {
+            key: value
+            for key, value in self.__data.items()
+            if key in keys
+        }
+
+        """ set values """
+        SetAttr.dict(_target, assign_value)
+
+        return
 
     """ Debug """
     def __repr__(self):
