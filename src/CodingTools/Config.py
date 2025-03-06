@@ -59,6 +59,7 @@ class Convert(DataClass):
         try:
             return {
                 key:
+                    None if value is None else
                     value[1:-1] if sum([value[i] not in ('"', "'") for i in (0, -1)]) == 0 else
                     bool(value) if value.lower() in ("true", "false") else
                     float(value) if "." in value else
