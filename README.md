@@ -20,10 +20,14 @@ CodingTools
 
 
 - Function
-  - ConsoleCaveat
+  - ConsoleCaveat functions
     - Message
       - ALREADY_EXISTS
     - create
+  - SetAttr functions
+    - dict function
+  - GetAttr functions
+    - keys function
 
 
 - Inheritance

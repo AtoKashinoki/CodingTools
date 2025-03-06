@@ -8,9 +8,9 @@ This file contains the Function-relate tools used for developing in Python.
 """ imports """
 
 
-from typing import Callable, Any
+from typing import Callable, Any, KeysView
 
-from CodingTools.Wrapper import initialize
+from CodingTools.Inheritance import DataClass
 
 
 """
@@ -21,7 +21,7 @@ from CodingTools.Wrapper import initialize
 """ Caveat functions """
 
 
-class ConsoleCaveat:
+class ConsoleCaveat(DataClass):
     """ Functions about caveat """
 
     class Message:
@@ -49,5 +49,39 @@ class ConsoleCaveat:
             return choices[user_reply]
 
         return caveat
+
+    ...
+
+
+""" Assignment and Get function """
+
+
+class SetAttr(DataClass):
+    """ Functions about assignment """
+
+    @staticmethod
+    def dict(_target: object, _dict: dict) -> None:
+        """ Assignment dictionary datas in target """
+        for key, value in _dict.items():
+            setattr(_target, key, value)
+            continue
+        return None
+
+    ...
+
+
+class GetAttr(DataClass):
+    """ Functions about get """
+
+    @staticmethod
+    def keys(
+            _target: object,
+            _keys: tuple[str] | list[str] | KeysView[str]
+    ) -> tuple[Any, ...]:
+        """ Get value from target """
+        return tuple(
+            getattr(_target, key)
+            for key in _keys
+        )
 
     ...
