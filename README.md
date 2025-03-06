@@ -65,6 +65,13 @@ CodingTools
   - rmtree
 
 
+- Config
+  - Convert functions class
+  - read function
+  - write function
+  - ConfigManager class
+
+
 - \_\_CodingCommands__
   - CodingTools command
   - Toml command class
