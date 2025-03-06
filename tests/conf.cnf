@@ -1,4 +1,6 @@
 int = 1
 float = 1.0
 bool = True
-text = 'test'
+str = 'test'
+tuple = (1, 1.0)
+list = [True, 'test']

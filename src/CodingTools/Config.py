@@ -52,18 +52,34 @@ class Convert(DataClass):
     def linking(self) -> str: return self.__linking
 
     """ Convert functions """
+    def type_converter(
+            self,
+            value: str
+    ) -> str | int | float | bool | tuple | None:
+        """ Convert str to type """
+        # None
+        if value.lower() == "none": return None
+        # container
+        for type_, s, e in zip([tuple, list], "([", ")]"):
+            if value[0] == s and value[-1] == e:
+                return type_(self.type_converter(v) for v in value[1:-1].split(","))
+            continue
+        # str
+        if sum([value[i] not in ('"', "'") for i in (0, -1)]) == 0: return value[1:-1]
+        # bool
+        if value.lower() in ("true", "false"): return bool(value)
+        # float
+        if "." in value: return float(value)
+        # int
+        return int(value)
+
     def text_to_dict(self, _text: str) -> dict | Exception:
         """ Convert text to dict """
         key: str
         value: str
         try:
             return {
-                key:
-                    None if value.lower() == "none" else
-                    value[1:-1] if sum([value[i] not in ('"', "'") for i in (0, -1)]) == 0 else
-                    bool(value) if value.lower() in ("true", "false") else
-                    float(value) if "." in value else
-                    int(value)
+                key: self.type_converter(value)
                 for key, value in map(
                     lambda line: line.split(self.__linking.replace(" ", "")),
                     [
