@@ -67,7 +67,7 @@ class Convert(DataClass):
         # str
         if sum([value[i] not in ('"', "'") for i in (0, -1)]) == 0: return value[1:-1]
         # bool
-        if value.lower() in ("true", "false"): return bool(value)
+        if value.lower() in ("true", "false"): return value.lower() == "true"
         # float
         if "." in value: return float(value)
         # int
