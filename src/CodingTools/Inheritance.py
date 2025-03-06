@@ -9,7 +9,7 @@ This file contains the inheritance-related tools used for developing in Python.
 
 
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, Iterator
 
 from .Error.Attribute import DefinedError
 
@@ -57,6 +57,14 @@ class DataClass(InheritanceSkeleton):
         self.__validate_attribute(_key)
         setattr(self, _key, _value)
         return
+
+    def keys(self) -> tuple:
+        """ Return keys """
+        return self.__get_accessible_keys()
+
+    def __iter__(self) -> Iterator:
+        """ Return iterable """
+        return iter(self.__get_accessible_keys())
 
     """ debug """
 
