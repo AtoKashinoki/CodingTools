@@ -73,6 +73,7 @@ class Convert(DataClass):
                 )
             }
         except Exception as e:
+            print(f"ConfigReadError['{e.__class__.__name__}{e}']")
             return NULL(f"{e.__class__.__name__}: {e}")
 
     def dict_to_text(self, _dict: dict) -> str:
