@@ -266,8 +266,8 @@ class ConfigManager(object):
         self.__data = result
         return None
 
-    def write(self) -> bool:
-        """ Write config file """
+    def save(self) -> bool:
+        """ Save config file """
         result = write(self.path, self.__data, converter=self.__converter)
         return result
 
