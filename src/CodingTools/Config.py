@@ -191,6 +191,7 @@ class ConfigManager(object):
         """ Get data """
         config = read(_path, converter=converter, encoding=encoding)
         if isinstance(config, NULL):
+            print(f"\033[31mFile '{_path}' create.\033[0m")
             result = write(
                 _path, {}, converter=converter, encoding=encoding
             )
