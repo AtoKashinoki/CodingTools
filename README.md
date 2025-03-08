@@ -59,6 +59,8 @@ CodingTools
     - DefinedError
   - TypeError
     - ValidError
+  - Other
+    - CancelledError
 
 
 - Command

@@ -20,6 +20,11 @@ class ErrorSkeleton(ABC):
     """ message """
     __message__: str
 
+    @abstractmethod
+    def __init__(self, **kwargs) -> None:
+        """ Initial message """
+        return
+
     ...
 
 
