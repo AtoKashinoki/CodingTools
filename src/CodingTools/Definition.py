@@ -24,6 +24,11 @@ class ALL(object):
     ...
 
 
+class Default(object):
+    """ Default object """
+    ...
+
+
 class NULL(Exception):
     """ NULL object """
     __message: str
