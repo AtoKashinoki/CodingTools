@@ -24,6 +24,7 @@ CodingTools
 
 - Function
   - ConsoleCaveat functions
+    - ANNOTATION constant
     - Message
       - ALREADY_EXISTS
     - create

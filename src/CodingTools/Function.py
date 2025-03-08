@@ -24,10 +24,15 @@ from CodingTools.Inheritance import DataClass
 class ConsoleCaveat(DataClass):
     """ Functions about caveat """
 
+    """ Constants """
+    ANNOTATION: type = Callable[[dict[str, Any]], bool]
+
     class Message:
         """ Caveatting message """
         ALREADY_EXISTS: str ="'{path}' already exists.\nOverwrite it?"
         ...
+
+    """ Function tools """
 
     @staticmethod
     def create(
