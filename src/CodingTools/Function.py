@@ -56,7 +56,7 @@ class ConsoleCaveat(DataClass):
 """ Assignment and Get function """
 
 
-class SetAttr(DataClass):
+class SetAttr:
     """ Functions about assignment """
 
     @staticmethod
@@ -70,7 +70,7 @@ class SetAttr(DataClass):
     ...
 
 
-class GetAttr(DataClass):
+class GetAttr:
     """ Functions about get """
 
     @staticmethod
