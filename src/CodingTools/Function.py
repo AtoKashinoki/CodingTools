@@ -122,26 +122,13 @@ class Validator:
 
     @staticmethod
     def execute(
-            _file_path: str,
-            _extension: str,
             _validators: list[Callable],
+            **kwargs: Any,
     ) -> Exception | None:
         """ validate path function of reading meta """
-
-        """ Args """
-        parent, name = os.path.split(_file_path)
-        kwargs: dict[str, Any] = {
-            "name": name,
-            "parent": parent,
-            "file_path": _file_path,
-            "extension": _extension,
-        }
-
-        """ validate """
         for validator in _validators:
             result = validator(**kwargs)
             if result is not None: return result
-
         return None
 
     ...
