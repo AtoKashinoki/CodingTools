@@ -9,8 +9,11 @@ This file contains the Function-relate tools used for developing in Python.
 
 
 from typing import Callable, Any, KeysView
+from .Error.Other import CancelledError
 
-from CodingTools.Inheritance import DataClass
+from .Inheritance import DataClass
+
+import os
 
 
 """
@@ -54,6 +57,92 @@ class ConsoleCaveat(DataClass):
             return choices[user_reply]
 
         return caveat
+
+    ...
+
+
+""" Validators """
+
+""" Validate function """
+
+
+class Validator:
+    """ Validate functions """
+
+    """ Validators """
+    @staticmethod
+    def extension(
+            name: str,
+            extension: str,
+            **kwargs: Any,
+    ) -> TypeError | None:
+        """ Validate extension """
+        if not name.split(".")[-1] == extension:
+            return TypeError(
+                "File '{}' is not a extension of meta file.".format(name),
+            )
+        return None
+
+    @staticmethod
+    def path_is_file(
+            file_path: str,
+            **kwargs: Any,
+    ) -> FileNotFoundError | None:
+        """ Validate path is a file """
+        if not os.path.isfile(file_path):
+            return FileNotFoundError(
+                "Path '{}' is not found.".format(file_path)
+            )
+        return None
+
+    @staticmethod
+    def exists(
+            file_path: str,
+            exists_caveat: ConsoleCaveat.ANNOTATION,
+            **kwargs: Any,
+    ) -> IsADirectoryError | CancelledError | None:
+        """ Validate exists file """
+        if os.path.exists(file_path):
+
+            # is not file
+            if not os.path.isfile(file_path):
+                return IsADirectoryError(
+                    "Path '{}' is not a file.".format(file_path)
+                )
+
+            # exists file
+            if not exists_caveat({"path": file_path}):
+                return CancelledError("Writing of metafile")
+
+            ...
+
+        return None
+
+    """ Validate execute """
+
+    @staticmethod
+    def execute(
+            _file_path: str,
+            _extension: str,
+            _validators: list[Callable],
+    ) -> Exception | None:
+        """ validate path function of reading meta """
+
+        """ Args """
+        parent, name = os.path.split(_file_path)
+        kwargs: dict[str, Any] = {
+            "name": name,
+            "parent": parent,
+            "file_path": _file_path,
+            "extension": _extension,
+        }
+
+        """ validate """
+        for validator in _validators:
+            result = validator(**kwargs)
+            if result is not None: return result
+
+        return None
 
     ...
 

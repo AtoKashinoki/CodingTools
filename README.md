@@ -28,10 +28,20 @@ CodingTools
     - Message
       - ALREADY_EXISTS
     - create
+  - Validator functions
+    - extension
+    - path_is_file
+    - exists
+    - execute
   - SetAttr functions
     - dict function
   - GetAttr functions
     - keys function
+
+
+- BuiltinFunction
+  - ConsoleCaveat functions
+    - already_exists function
 
 
 - Inheritance
