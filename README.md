@@ -31,6 +31,7 @@ CodingTools
   - Validator functions
     - extension
     - path_is_file
+    - path_is_dir
     - exists
     - execute
   - SetAttr functions
@@ -70,6 +71,7 @@ CodingTools
   - TypeError
     - ValidError
   - Other
+    - DirNotFoundError
     - CancelledError
 
 

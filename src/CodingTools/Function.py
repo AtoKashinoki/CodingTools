@@ -9,7 +9,7 @@ This file contains the Function-relate tools used for developing in Python.
 
 
 from typing import Callable, Any, KeysView
-from .Error.Other import CancelledError
+from .Error.Other import CancelledError, DirNotFoundError
 
 from .Inheritance import DataClass
 
@@ -96,26 +96,26 @@ class Validator:
         return None
 
     @staticmethod
+    def path_is_dir(
+            dir_path: str,
+            **kwargs: Any,
+    ) -> DirNotFoundError | None:
+        """ Validate path is a directory """
+        if not os.path.isdir(dir_path):
+            return DirNotFoundError(dir_path)
+        return None
+
+    @staticmethod
     def exists(
             file_path: str,
             exists_caveat: ConsoleCaveat.ANNOTATION,
             **kwargs: Any,
-    ) -> IsADirectoryError | CancelledError | None:
-        """ Validate exists file """
+    ) -> CancelledError | None:
+        """ Validate exists """
         if os.path.exists(file_path):
-
-            # is not file
-            if not os.path.isfile(file_path):
-                return IsADirectoryError(
-                    "Path '{}' is not a file.".format(file_path)
-                )
-
-            # exists file
             if not exists_caveat({"path": file_path}):
                 return CancelledError("Writing of metafile")
-
             ...
-
         return None
 
     """ Validate execute """

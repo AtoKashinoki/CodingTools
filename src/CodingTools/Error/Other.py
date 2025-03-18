@@ -22,6 +22,19 @@ Exception = gen_skeleton(Exception)
 """ Cancelled """
 
 
+class DirNotFoundError(Exception):
+    """ Directory not found """
+
+    __message__ = "Path '{path}' is not found."
+
+    def __init__(self, _path: str) -> None:
+        """ Initial message """
+        super().__init__(path=_path)
+        return
+
+    ...
+
+
 class CancelledError(Exception, ErrorSkeleton):
     """ Processes cancelled """
 
