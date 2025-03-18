@@ -91,7 +91,7 @@ class Validator:
         """ Validate path is a file """
         if not os.path.isfile(file_path):
             return FileNotFoundError(
-                "Path '{}' is not found.".format(file_path)
+                "File '{}' is not found.".format(file_path)
             )
         return None
 

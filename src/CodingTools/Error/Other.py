@@ -25,7 +25,7 @@ Exception = gen_skeleton(Exception)
 class DirNotFoundError(Exception):
     """ Directory not found """
 
-    __message__ = "Path '{path}' is not found."
+    __message__ = "Directory '{path}' is not found."
 
     def __init__(self, _path: str) -> None:
         """ Initial message """
