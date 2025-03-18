@@ -28,7 +28,7 @@ class ConsoleCaveat(DataClass):
     """ Functions about caveat """
 
     """ Constants """
-    ANNOTATION: type = Callable[[dict[str, Any]], bool]
+    ANNOTATION: type = Callable[[dict[str, Any]], bool] | None
 
     class Message:
         """ Caveatting message """
@@ -113,6 +113,7 @@ class Validator:
     ) -> CancelledError | None:
         """ Validate exists """
         if os.path.exists(file_path):
+            if exists_caveat is None: return None
             if not exists_caveat({"path": file_path}):
                 return CancelledError("Writing of metafile")
             ...
